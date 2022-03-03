@@ -5,10 +5,10 @@
       <div v-for="(video, index) in videos" :key="index">
         <router-link :to="{ name: 'video-watch', params: { id: video.id } }">
           <div class="video-box">
-            <img :src="video.thumbnail" />
+            <img :src="video.attributes.thumbnail" />
             <div>
-              <h3>{{ video.name }}</h3>
-              <div v-html="video.description"></div>
+              <h3>{{ video.attributes.name }}</h3>
+              <div v-html="video.attributes.description"></div>
             </div>
           </div>
         </router-link>
@@ -22,9 +22,18 @@ import Api from "../services/api";
 export default {
   name: "Home",
   components: {},
+  methods: {
+    async loadVideos() {
+      let response = await Api().get("/videos");
+      this.videos = await response.data.data;
+    },
+  },
+  mounted() {
+    this.loadVideos();
+  },
   data() {
     return {
-      videos: Api().get("/videos"),
+      videos: [],
     };
   },
 };
