@@ -18,14 +18,13 @@
 </template>
 
 <script>
-// @ is an alias to /src
-
+import Api from "../services/api";
 export default {
   name: "Home",
   components: {},
   data() {
     return {
-      videos: this.$store.state.videos,
+      videos: Api().get("/videos"),
     };
   },
 };
