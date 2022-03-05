@@ -1,10 +1,10 @@
 <template>
   <div>
     <video width="400" controls>
-      <source ref="videoRef" />
+      <source :src="video.url" />
       Your browser does not support HTML video.
     </video>
-
+    {{ video }}
     <h1>{{ video.name }}</h1>
     <div v-html="video.description"></div>
   </div>
@@ -17,9 +17,6 @@ export default {
         (vid) => vid.id == this.$route.params.id
       );
     },
-  },
-  mounted: function () {
-    this.$refs.videoRef.src = this.video.videoUrl;
   },
 };
 </script>

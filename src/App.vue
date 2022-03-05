@@ -7,6 +7,13 @@
     <router-view />
   </div>
 </template>
+<script>
+export default {
+  mounted() {
+    this.$store.dispatch("loadVideos");
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
