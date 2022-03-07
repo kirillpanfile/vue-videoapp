@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import VideoWatch from "../views/VideoWatch.vue";
+import TagVideoList from "../views/TagVideoList.vue";
 const routes = [
   {
     path: "/",
@@ -21,6 +22,11 @@ const routes = [
     name: "video-watch",
     component: VideoWatch,
     params: true,
+  },
+  {
+    path: "/tag/:id",
+    name: "tag",
+    component: TagVideoList,
   },
 ];
 

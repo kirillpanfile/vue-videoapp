@@ -10,7 +10,9 @@
       v-for="(tag_id, index) in video.tag_ids"
       :key="index"
     >
-      <button>{{ getTag(tag_id).name }}</button>
+      <router-link :to="{ name: 'tag', params: { id: tag_id } }">
+        <button>{{ getTag(tag_id).name }}</button>
+      </router-link>
     </span>
     <h1>{{ video.name }}</h1>
     <div v-html="video.description"></div>
@@ -33,5 +35,23 @@ export default {
 <style scoped>
 img {
   max-width: 50%;
+}
+</style>
+
+<style lang="scss">
+.video-container {
+  .video-box {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    img {
+      width: 200px;
+      padding: 10px;
+    }
+  }
 }
 </style>
