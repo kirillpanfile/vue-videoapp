@@ -1,6 +1,9 @@
 <template>
   <div class="home">
     <h1>Videos</h1>
+    <div v-for="(tag, index) in tags" :key="index">
+      {{ tag.name }}
+    </div>
     <div class="video-container">
       <div v-for="(video, index) in videos" :key="index">
         <router-link :to="{ name: 'video-watch', params: { id: video.id } }">
@@ -24,6 +27,9 @@ export default {
   computed: {
     videos() {
       return this.$store.state.videos;
+    },
+    tags() {
+      return this.$store.state.tags;
     },
   },
 };

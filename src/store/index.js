@@ -26,7 +26,7 @@ export default createStore({
         v.attributes.id = v.id;
         v.attributes.tag_ids = v.relationships.tags.data.map((t) => t.id);
       });
-
+      console.log(tags);
       commit(
         "SET_VIDEOS",
         videos.map((v) => v.attributes)
