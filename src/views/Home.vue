@@ -1,9 +1,6 @@
 <template>
   <div class="home">
     <h1>Videos</h1>
-    <div v-for="(tag, index) in tags" :key="index">
-      {{ tag.name }}
-    </div>
     <div class="video-container">
       <div v-for="(video, index) in videos" :key="index">
         <router-link :to="{ name: 'video-watch', params: { id: video.id } }">
@@ -12,6 +9,13 @@
             <div>
               <h3>{{ video.name }}</h3>
               <div v-html="video.description"></div>
+              <span
+                class="tag-button"
+                v-for="(tag_id, index) in video.tag_ids"
+                :key="index"
+              >
+                <button>{{ getTag(tag_id).name }}</button>
+              </span>
             </div>
           </div>
         </router-link>
@@ -21,16 +25,13 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from "vuex";
 export default {
   name: "Home",
   components: {},
   computed: {
-    videos() {
-      return this.$store.state.videos;
-    },
-    tags() {
-      return this.$store.state.tags;
-    },
+    ...mapState(["videos", "tags"]),
+    ...mapGetters(["getTag"]),
   },
 };
 </script>

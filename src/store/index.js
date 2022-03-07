@@ -38,4 +38,9 @@ export default createStore({
     },
   },
   modules: {},
+  getters: {
+    getTag: (state) => (id) => {
+      return state.tags.find((t) => t.id == id);
+    },
+  },
 });
