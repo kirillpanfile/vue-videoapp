@@ -4,7 +4,6 @@
       <source :src="video.url" />
       Your browser does not support HTML video.
     </video>
-    {{ video }}
     <h1>{{ video.name }}</h1>
     <div v-html="video.description"></div>
   </div>
