@@ -1,27 +1,24 @@
 <template>
-  <router-link :to="{ name: 'video-watch', params: { id: video.id } }">
-    <div class="video-box">
-      <img :src="video.thumbnail" />
-      <div>
-        <h3>{{ video.name }}</h3>
-        <div v-html="video.description"></div>
-        <span
-          class="tag-button"
-          v-for="(tag_id, index) in video.tag_ids"
-          :key="index"
+  <v-card
+    width="400"
+    height="400"
+    class="ma-2"
+    :to="{ name: 'video-watch', params: { id: video.id } }"
+  >
+    <v-img :src="video.thumbnail" />
+    <v-card-title>{{ video.name }}</v-card-title>
+    <v-card-actions>
+      <span v-for="(tag_id, index) in video.tag_ids" :key="index">
+        <v-btn
+          color="success"
+          @mousedown.stop
+          :to="{ name: 'tag', params: { id: tag_id } }"
         >
-          <v-btn
-            color="success"
-            size="small"
-            class="mr-2"
-            :to="{ name: 'tag', params: { id: tag_id } }"
-          >
-            {{ getTag(tag_id).name }}
-          </v-btn>
-        </span>
-      </div>
-    </div>
-  </router-link>
+          {{ getTag(tag_id).name }}
+        </v-btn>
+      </span>
+    </v-card-actions>
+  </v-card>
 </template>
 <script>
 import { mapGetters } from "vuex";

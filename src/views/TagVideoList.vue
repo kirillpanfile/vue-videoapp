@@ -1,8 +1,12 @@
 <template>
   <div>
-    <h1>videos with tag "{{ tag.name }}"</h1>
-    <div v-for="(video, index) in videosOnTag" :key="index">
-      <VideoListVideo :video="video" />
+    <h1 class="display-3 ma-4 d-flex justify-center">
+      Videos with Tag "{{ tag.name }}"
+    </h1>
+    <div class="d-flex flex-wrap">
+      <div v-for="(video, index) in videosOnTag" :key="index">
+        <VideoListVideo :video="video" />
+      </div>
     </div>
   </div>
 </template>
