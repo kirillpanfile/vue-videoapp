@@ -1,22 +1,27 @@
 <template>
-  <div>
-    <video width="400" controls>
-      <source :src="video.url" />
-      Your browser does not support HTML video.
-    </video>
-    <br />
-    <span
-      class="tag-button"
-      v-for="(tag_id, index) in video.tag_ids"
-      :key="index"
-    >
-      <router-link :to="{ name: 'tag', params: { id: tag_id } }">
-        <button>{{ getTag(tag_id).name }}</button>
-      </router-link>
-    </span>
-    <h1>{{ video.name }}</h1>
-    <div v-html="video.description"></div>
-  </div>
+  <v-container>
+    <v-row>
+      <v-col md="9" cols="12">
+        <video width="600" controls>
+          <source :src="video.url" />
+          Your browser does not support HTML video.
+        </video>
+      </v-col>
+      <v-col md="3" cols="12">
+        <div class="display-1">{{ video.name }}</div>
+        <div v-html="video.description"></div>
+        <span v-for="tag_id in video.tag_ids" :key="tag_id">
+          <v-btn
+            :to="{ name: 'tag', params: { id: tag_id } }"
+            color="green lighten-2"
+            class="mr-1 mb-2"
+          >
+            {{ getTag(tag_id).name }}
+          </v-btn>
+        </span>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 <script>
 import { mapGetters } from "vuex";

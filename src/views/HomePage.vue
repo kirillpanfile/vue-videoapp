@@ -1,6 +1,8 @@
 <template>
   <div class="home">
-    <div class="display-4 ma-4 d-flex justify-center">All Videos</div>
+    <div title class="text-h3 display-4 ma-4 d-flex justify-center">
+      All Videos
+    </div>
     <div class="d-flex flex-wrap">
       <div v-for="(video, index) in videos" :key="index">
         <VideoListVideo :video="video" />
