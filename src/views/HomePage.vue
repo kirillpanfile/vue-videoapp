@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>Videos</h1>
+    <h1 class="display-4 ma-4 d-flex justify-center">All Videos</h1>
     <div class="video-container">
       <div v-for="(video, index) in videos" :key="index">
         <VideoListVideo :video="video" />
@@ -13,7 +13,7 @@
 import { mapState, mapGetters } from "vuex";
 import VideoListVideo from "../components/VideoListVideo";
 export default {
-  name: "Home",
+  name: "HomePage",
   components: { VideoListVideo },
   computed: {
     ...mapState(["videos", "tags"]),

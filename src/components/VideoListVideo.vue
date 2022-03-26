@@ -10,9 +10,14 @@
           v-for="(tag_id, index) in video.tag_ids"
           :key="index"
         >
-          <router-link :to="{ name: 'tag', params: { id: tag_id } }">
-            <button>{{ getTag(tag_id).name }}</button>
-          </router-link>
+          <v-btn
+            color="success"
+            size="small"
+            class="mr-2"
+            :to="{ name: 'tag', params: { id: tag_id } }"
+          >
+            {{ getTag(tag_id).name }}
+          </v-btn>
         </span>
       </div>
     </div>
