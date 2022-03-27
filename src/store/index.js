@@ -16,6 +16,14 @@ export default createStore({
     SET_PLAYED_VIDEOS(state, playedVideos) {
       state.playedVideos = playedVideos;
     },
+    MARK_VIDEO_PLAYED(state, videoID) {
+      let playedVideos = state.playedVideos.concat(videoID);
+      state.playedVideos = playedVideos;
+      window.localStorage.setItem(
+        "playedVideos",
+        JSON.stringify(state.playedVideos)
+      );
+    },
   },
   actions: {
     async loadVideos({ commit }) {
@@ -41,6 +49,9 @@ export default createStore({
       );
       let playedVideos = JSON.parse(window.localStorage.playedVideos);
       commit("SET_PLAYED_VIDEOS", playedVideos);
+    },
+    markPlayed({ commit }, videoID) {
+      commit("MARK_VIDEO_PLAYED", videoID);
     },
   },
   modules: {},

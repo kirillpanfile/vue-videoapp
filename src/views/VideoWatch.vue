@@ -11,7 +11,7 @@
         <div class="display-1">{{ video.name }}</div>
         <div class="green" v-if="isPlayed">Played</div>
         <div class="green" v-else>
-          <v-btn size="x-small">Mark as played</v-btn>
+          <v-btn size="x-small" @click="markPlayed()">Mark as played</v-btn>
         </div>
         <div v-html="video.description"></div>
         <span v-for="tag_id in video.tag_ids" :key="tag_id">
@@ -40,6 +40,11 @@ export default {
       for (const element of this.playedVideos)
         if (element == this.video.id) return true;
       return false;
+    },
+  },
+  methods: {
+    markPlayed() {
+      this.$store.dispatch("markPlayed", this.video.id);
     },
   },
 };
