@@ -9,7 +9,10 @@
       </v-col>
       <v-col md="3" cols="12">
         <div class="display-1">{{ video.name }}</div>
-        <div class="green" v-if="isPlayed">Played</div>
+        <div class="green" v-if="isPlayed">
+          <font-awesome-icon icon="check" />
+          Played
+        </div>
         <div class="green" v-else>
           <v-btn size="x-small" @click="markPlayed()">Mark as played</v-btn>
         </div>
