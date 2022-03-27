@@ -9,6 +9,10 @@
       </v-col>
       <v-col md="3" cols="12">
         <div class="display-1">{{ video.name }}</div>
+        <div class="green" v-if="isPlayed">Played</div>
+        <div class="green" v-else>
+          <v-btn size="x-small">Mark as played</v-btn>
+        </div>
         <div v-html="video.description"></div>
         <span v-for="tag_id in video.tag_ids" :key="tag_id">
           <v-btn
@@ -24,14 +28,18 @@
   </v-container>
 </template>
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 export default {
   computed: {
     ...mapGetters(["getTag"]),
+    ...mapState(["playedVideos", "videos"]),
     video() {
-      return this.$store.state.videos.find(
-        (vid) => vid.id == this.$route.params.id
-      );
+      return this.videos.find((vid) => vid.id == this.$route.params.id);
+    },
+    isPlayed() {
+      for (const element of this.playedVideos)
+        if (element == this.video.id) return true;
+      return false;
     },
   },
 };
@@ -44,19 +52,7 @@ img {
 </style>
 
 <style lang="scss">
-.video-container {
-  .video-box {
-    border: 1px solid black;
-    border-radius: 10px;
-    margin: 10px;
-    padding: 10px;
-    text-align: left;
-    display: flex;
-    justify-content: flex-start;
-    img {
-      width: 200px;
-      padding: 10px;
-    }
-  }
+.green {
+  color: green;
 }
 </style>

@@ -4,6 +4,7 @@ export default createStore({
   state: {
     videos: [],
     tags: [],
+    playedVideos: [],
   },
   mutations: {
     SET_VIDEOS(state, videos) {
@@ -11,6 +12,9 @@ export default createStore({
     },
     SET_TAGS(state, tags) {
       state.tags = tags;
+    },
+    SET_PLAYED_VIDEOS(state, playedVideos) {
+      state.playedVideos = playedVideos;
     },
   },
   actions: {
@@ -35,6 +39,8 @@ export default createStore({
         "SET_TAGS",
         tags.map((t) => t.attributes)
       );
+      let playedVideos = JSON.parse(window.localStorage.playedVideos);
+      commit("SET_PLAYED_VIDEOS", playedVideos);
     },
   },
   modules: {},
