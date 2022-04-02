@@ -4,7 +4,7 @@ import Home from "../views/Home.vue";
 import VideoWatch from "../views/VideoWatch.vue";
 import VideoCreate from "../views/VideoCreate.vue";
 import TagVideoList from "../views/TagVideoList.vue";
-
+import AdminVideoList from "../views/AdminVideoList.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -12,6 +12,11 @@ const routes = [
     path: "/",
     name: "home",
     component: Home,
+  },
+  {
+    path: "/admin/videos",
+    name: "admin-video-list",
+    component: AdminVideoList,
   },
   {
     path: "/about",
